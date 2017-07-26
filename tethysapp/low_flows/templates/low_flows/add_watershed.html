@@ -1,0 +1,27 @@
+{% extends "low_flows/base.html" %}
+{% load tethys_gizmos %}
+
+{% block app_content %}
+  <h1>COMING SOON!!!</h1>
+  <h2>Add Watershed</h2>
+  <form id="add-watershed-form" method="post">
+    {% csrf_token %}
+    {% gizmo watershed_name_input %}
+    <div class="form-group">
+        <label for="fileInput">Shapefiles</label>
+        <input name="files" type="file" multiple class="form-control" id="fileInput" placeholder="Shapefiles">
+    </div>
+    <div class="form-group">
+        <label for="fileInput">Statsfile</label>
+        <input name="files" type="file" multiple class="form-control" id="fileInput" placeholder="Statsfiles"
+    </div>
+    <br>
+    <h6>Add your own low flow threshold for any stream in the new watershed</h6>
+    {% gizmo low_thresh_input %}
+  </form>
+{% endblock %}
+
+{% block app_actions %}
+  {% gizmo cancel_button %}
+  {% gizmo add_button %}
+{% endblock %}
